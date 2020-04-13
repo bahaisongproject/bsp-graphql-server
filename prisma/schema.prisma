@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Song {
+  song_id     Int           @default(autoincrement()) @id
+  title       String?
+  performances Performance[]
+  excerpts    Excerpt[]     @relation(references: [excerpt_id])
+  additional_languages    Language[]    @relation(references: [language_id])
+  tags         Tag[]         @relation(references: [tag_id])
+  contributors Contributor[] @relation(references: [contributor_id])
+}
+
+model Tag {
+  tag_id          Int     @default(autoincrement()) @id
+  tag_description String?
+  tag_name        String?
+  songs            Song[]  @relation(references: [song_id])
+}
+
+model Source {
+  source_id          Int       @default(autoincrement()) @id
+  source_author      String?
+  source_description String?
+  excerpts            Excerpt[]
+}
+
+model Contributor {
+  contributor_id   Int           @default(autoincrement()) @id
+  contributor_name String?
+  contributor_url  String?
+  performances      Performance[] @relation(references: [performance_id])
+  songs             Song[]        @relation(references: [song_id])
+}
+
+model Performance {
+  performance_id   Int           @default(autoincrement()) @id
+  main_performance String?
+  published        String?
+  youtube_id       String?
+  song             Song?         @relation(fields: [song_id], references: [song_id])
+  song_id          Int?
+  contributors      Contributor[] @relation(references: [contributor_id])
+}
+
+model Excerpt {
+  excerpt_id   Int       @default(autoincrement()) @id
+  excerpt_text String?
+  language     Language? @relation(fields: [language_id], references: [language_id])
+  source       Source?   @relation(fields: [source_id], references: [source_id])
+  songs         Song[]    @relation(references: [song_id])
+  language_id  Int?
+  source_id    Int?
+}
+
+model Language {
+  language_id          Int       @default(autoincrement()) @id
+  language_code        String?
+  language_name_en     String?
+  language_name_native String?
+  excerpts              Excerpt[]
+  songs                 Song[]    @relation(references: [song_id])
+}

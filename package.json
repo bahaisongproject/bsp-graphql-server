@@ -1,0 +1,18 @@
+{
+  "name": "bsp-graphql-server",
+  "version": "0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Dayyan Smith",
+  "license": "ISC",
+  "devDependencies": {
+    "@prisma/cli": "^2.0.0-beta.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.0.0-beta.2"
+  }
+}

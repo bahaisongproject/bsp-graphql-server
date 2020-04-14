@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node src"
+    "dev": "node src",
+    "start": "node src"
   },
   "keywords": [],
   "author": "Dayyan Smith",
@@ -19,5 +20,8 @@
     "graphql-yoga": "^1.16.1",
     "nexus": "0.12.0",
     "nexus-prisma": "^0.11.0"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }

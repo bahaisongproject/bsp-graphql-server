@@ -1,6 +1,9 @@
 # A GraphQL server for bahá'í song project
 
-The bahá'í song project GraphQL server provides a flexible way for accessing information about the songs currently published on http://bahai-song-project.de.
+The bahá'í song project GraphQL server provides a flexible way for accessing information about the songs currently published on bahá'í song project.
+
+Access the GraphQL Playground at https://bsp-graphql-server.herokuapp.com/.
+
 
 
 1. Clone repo with `git clone git@github.com:bahaisongproject/bsp-graphql-server.git`

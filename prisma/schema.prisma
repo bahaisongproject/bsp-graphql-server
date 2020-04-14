@@ -45,8 +45,8 @@ model Performance {
   published        String?
   youtube_id       String?
   song             Song?         @relation(fields: [song_id], references: [song_id])
-  song_id          Int?
   contributors      Contributor[] @relation(references: [contributor_id])
+  song_id          Int?
 }
 
 model Excerpt {

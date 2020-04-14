@@ -65,6 +65,7 @@ export interface NexusGenRootTypes {
     main_performance?: string | null; // String
     performance_id: number; // Int!
     published?: string | null; // String
+    soundcloud_id?: string | null; // String
     youtube_id?: string | null; // String
   }
   Query: {};
@@ -128,6 +129,7 @@ export interface NexusGenFieldTypes {
     performance_id: number; // Int!
     published: string | null; // String
     song: NexusGenRootTypes['Song'] | null; // Song
+    soundcloud_id: string | null; // String
     youtube_id: string | null; // String
   }
   Query: { // field return type

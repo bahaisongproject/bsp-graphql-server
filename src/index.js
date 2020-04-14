@@ -72,6 +72,7 @@ const Performance = objectType({
       t.model.main_performance()
       t.model.published()
       t.model.youtube_id()
+      t.model.soundcloud_id()
       t.model.song()
       t.model.contributors({
         pagination: false,

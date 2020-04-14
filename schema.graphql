@@ -45,6 +45,7 @@ type Performance {
   performance_id: Int!
   published: String
   song: Song
+  soundcloud_id: String
   youtube_id: String
 }
 

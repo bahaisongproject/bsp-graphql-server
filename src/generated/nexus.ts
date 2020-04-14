@@ -155,6 +155,7 @@ export interface NexusGenFieldTypes {
     performances: NexusGenRootTypes['Performance'][]; // [Performance!]!
     slug: string; // String!
     song_id: number; // Int!
+    sources: NexusGenRootTypes['Source'][]; // [Source!]!
     tags: NexusGenRootTypes['Tag'][]; // [Tag!]!
     title: string | null; // String
   }

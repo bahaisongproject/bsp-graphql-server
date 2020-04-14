@@ -77,6 +77,7 @@ type Song {
   performances: [Performance!]!
   slug: String!
   song_id: Int!
+  sources: [Source!]!
   tags: [Tag!]!
   title: String
 }

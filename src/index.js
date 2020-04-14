@@ -53,6 +53,29 @@ const Song = objectType({
       }
     })
 
+    t.list.field('sources', {
+      type: 'Source',
+      resolve: async (parent, args, ctx) => {
+        const excerpts = await ctx.prisma.song.findOne({where: {song_id: parent.song_id}}).excerpts()
+
+        let sources = []
+        
+        // Add sources based on these excerpts
+        for (const i in excerpts) {
+          const excerpt_source = await ctx.prisma.excerpt.findOne({where: {excerpt_id: excerpts[i]['excerpt_id']}}).source()
+          sources.push(excerpt_source)
+        }
+
+
+        // Only keep unique sources
+        sources = sources.filter((obj, pos, arr) => {
+          return arr.map(mapObj => mapObj['source_id']).indexOf(obj['source_id']) === pos;
+        })
+
+        return sources
+      }
+    })
+
     t.model.tags({
         pagination: false,
       })

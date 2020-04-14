@@ -16,6 +16,6 @@ What you can do now
 
 
 Changing the database schema
-- Change database schema (directly in sqlite3 or using an application such as DB Browser for SQLite)
-- Adapt `prisma/schema.prisma` to reflect changes in database. If you want you can also run `npx prisma introspect` to automatically change the `prisma/schema.prisma`. In that case you need to make a backup of `prisma/schema.prisma` beforehand and reapply custom changes manually.
-- Regenerate Prisma client (after changing database schema) with `npx prisma generate`.
+1. Change database schema (directly in sqlite3 or using an application such as DB Browser for SQLite)
+2. Adapt `prisma/schema.prisma` to reflect changes in database. If you want you can also run `npx prisma introspect` to automatically change the `prisma/schema.prisma`. In that case you need to make a backup of `prisma/schema.prisma` beforehand and reapply custom changes manually.
+3. Regenerate Prisma client (after changing database schema) with `npx prisma generate`.

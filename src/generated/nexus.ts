@@ -160,6 +160,7 @@ export interface NexusGenFieldTypes {
   }
   Source: { // field return type
     excerpts: NexusGenRootTypes['Excerpt'][]; // [Excerpt!]!
+    songs: NexusGenRootTypes['Song'][]; // [Song!]!
     source_author: string | null; // String
     source_description: string | null; // String
     source_id: number; // Int!

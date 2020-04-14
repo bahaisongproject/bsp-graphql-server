@@ -87,6 +87,7 @@ input SongWhereUniqueInput {
 
 type Source {
   excerpts: [Excerpt!]!
+  songs: [Song!]!
   source_author: String
   source_description: String
   source_id: Int!

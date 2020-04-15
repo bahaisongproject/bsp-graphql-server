@@ -32,7 +32,7 @@ const Song = objectType({
           languages.push(excerpt_language);
         }
 
-        // Only keep unique songs
+        // Only keep unique languages
         languages = languages.filter((obj, pos, arr) => {
           return (
             arr

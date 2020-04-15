@@ -12,7 +12,9 @@
   "author": "Dayyan Smith",
   "license": "ISC",
   "devDependencies": {
-    "@prisma/cli": "^2.0.0-beta.2"
+    "@prisma/cli": "^2.0.0-beta.2",
+    "pre-commit": "^1.2.2",
+    "prettier": "2.0.4"
   },
   "dependencies": {
     "@prisma/client": "2.0.0-beta.2",

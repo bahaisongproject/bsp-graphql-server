@@ -10,6 +10,7 @@ datasource db {
 model Song {
   song_id     Int           @default(autoincrement()) @id
   title       String?
+  slug        String  @unique
   performances Performance[]
   excerpts    Excerpt[]     @relation(references: [excerpt_id])
   additional_languages    Language[]    @relation(references: [language_id])

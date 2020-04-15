@@ -23,6 +23,7 @@ const Song = objectType({
   definition(t) {
     t.model.song_id()
     t.model.title()
+    t.model.slug()
     t.model.performances({
         pagination: false,
       })
@@ -82,9 +83,6 @@ const Song = objectType({
     t.model.contributors({
         pagination: false,
       })
-    t.string('slug', {
-        resolve: ({ title }, args, ctx) => title.toLowerCase(),
-    })
   },
 })
 

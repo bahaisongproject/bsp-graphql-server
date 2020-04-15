@@ -32,6 +32,7 @@ export interface NexusGenInputs {
     performance_id?: number | null; // Int
   }
   SongWhereUniqueInput: { // input type
+    slug?: string | null; // String
     song_id?: number | null; // Int
   }
   SourceWhereUniqueInput: { // input type
@@ -70,6 +71,7 @@ export interface NexusGenRootTypes {
   }
   Query: {};
   Song: { // root type
+    slug: string; // String!
     song_id: number; // Int!
     title?: string | null; // String
   }

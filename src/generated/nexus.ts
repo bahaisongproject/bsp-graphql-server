@@ -55,6 +55,7 @@ export interface NexusGenRootTypes {
   Excerpt: { // root type
     excerpt_id: number; // Int!
     excerpt_text?: string | null; // String
+    excerpt_transliteration?: string | null; // String
   }
   Language: { // root type
     language_code?: string | null; // String
@@ -113,6 +114,7 @@ export interface NexusGenFieldTypes {
   Excerpt: { // field return type
     excerpt_id: number; // Int!
     excerpt_text: string | null; // String
+    excerpt_transliteration: string | null; // String
     language: NexusGenRootTypes['Language'] | null; // Language
     songs: NexusGenRootTypes['Song'][]; // [Song!]!
     source: NexusGenRootTypes['Source'] | null; // Source

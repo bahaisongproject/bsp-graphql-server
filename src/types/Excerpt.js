@@ -5,6 +5,7 @@ const Excerpt = objectType({
   definition(t) {
     t.model.excerpt_id();
     t.model.excerpt_text();
+    t.model.excerpt_transliteration();
     t.model.language();
     t.model.source();
     t.model.songs({

@@ -54,6 +54,7 @@ model Performance {
 model Excerpt {
   excerpt_id   Int       @default(autoincrement()) @id
   excerpt_text String?
+  excerpt_transliteration String?
   language     Language? @relation(fields: [language_id], references: [language_id])
   source       Source?   @relation(fields: [source_id], references: [source_id])
   songs         Song[]    @relation(references: [song_id])

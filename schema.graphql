@@ -17,6 +17,7 @@ input ContributorWhereUniqueInput {
 type Excerpt {
   excerpt_id: Int!
   excerpt_text: String
+  excerpt_transliteration: String
   language: Language
   songs: [Song!]!
   source: Source

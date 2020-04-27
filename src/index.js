@@ -17,7 +17,7 @@ new GraphQLServer({
     },
   }),
   context: { prisma },
-}).start(() => console.log(`🚀 Server ready at: http://localhost:4000\n`));
+}).start(() => console.log(`🚀 GraphQL server ready at: http://localhost:4000\n`));
 
 
 var file = new static.Server('./public');
@@ -28,4 +28,4 @@ require('http').createServer(function (request, response) {
       //
       file.serve(request, response);
   }).resume();
-}).listen(8080);
+}).listen(80, console.log(`🚀 Static server ready`));

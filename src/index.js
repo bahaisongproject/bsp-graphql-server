@@ -7,17 +7,17 @@ const express = require('express');
 const app = express();
 const prisma = new PrismaClient();
 
-new GraphQLServer({
-  schema: makeSchema({
-    types,
-    plugins: [nexusPrismaPlugin()],
-    outputs: {
-      schema: __dirname + "/../schema.graphql",
-      typegen: __dirname + "/generated/nexus.ts",
-    },
-  }),
-  context: { prisma },
-}).start(() => console.log(`🚀 GraphQL server ready at: http://localhost:4000\n`));
+// new GraphQLServer({
+//   schema: makeSchema({
+//     types,
+//     plugins: [nexusPrismaPlugin()],
+//     outputs: {
+//       schema: __dirname + "/../schema.graphql",
+//       typegen: __dirname + "/generated/nexus.ts",
+//     },
+//   }),
+//   context: { prisma },
+// }).start(() => console.log(`🚀 GraphQL server ready at: http://localhost:4000\n`));
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {

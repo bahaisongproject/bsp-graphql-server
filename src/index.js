@@ -20,7 +20,12 @@ new GraphQLServer({
 }).start(() => console.log(`🚀 GraphQL server ready at: http://localhost:4000\n`));
 
 app.use(express.static('public'));
+app.get('/', (req, res) => {
+  res.send('An alligator approaches!');
+});
 app.get('/.well-known/acme-challenge/XKFh8ZO8ntJHAqCE_ZmE9g6TcgnDcohS5gQr5oW3ROY', (req, res) => {
   res.send('XKFh8ZO8ntJHAqCE_ZmE9g6TcgnDcohS5gQr5oW3ROY.GXkDLsnZLko_IqiZsi-SgsqhpMCaP3ivQUhJ5XzmeUU');
 });
-app.listen(3000, () => console.log('Gator app listening on port 3000!'));
+let server = app.listen(() => {
+  console.log('Listening', server.address().port)
+})

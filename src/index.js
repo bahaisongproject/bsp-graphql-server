@@ -3,8 +3,8 @@ const { makeSchema, objectType, intArg, stringArg } = require("nexus");
 const { PrismaClient } = require("@prisma/client");
 const { nexusPrismaPlugin } = require("nexus-prisma");
 const types = require("./types");
-var static = require('node-static');
-
+const express = require('express');
+const app = express();
 const prisma = new PrismaClient();
 
 new GraphQLServer({
@@ -19,13 +19,8 @@ new GraphQLServer({
   context: { prisma },
 }).start(() => console.log(`🚀 GraphQL server ready at: http://localhost:4000\n`));
 
-
-var file = new static.Server('./public');
-require('http').createServer(function (request, response) {
-  request.addListener('end', function () {
-      //
-      // Serve files!
-      //
-      file.serve(request, response);
-  }).resume();
-}).listen(80, console.log(`🚀 Static server ready`));
+app.use(express.static('public'));
+app.get('/.well-known/acme-challenge/XKFh8ZO8ntJHAqCE_ZmE9g6TcgnDcohS5gQr5oW3ROY', (req, res) => {
+  res.send('XKFh8ZO8ntJHAqCE_ZmE9g6TcgnDcohS5gQr5oW3ROY.GXkDLsnZLko_IqiZsi-SgsqhpMCaP3ivQUhJ5XzmeUU');
+});
+app.listen(3000, () => console.log('Gator app listening on port 3000!'));

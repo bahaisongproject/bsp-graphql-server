@@ -21,4 +21,4 @@ Changing the database schema
 1. Regenerate Prisma client (after changing database schema) with `npx prisma generate`. This updates the Prisma Client in `node_modules`.
 1. Update types in `src/types` to reflect new database schema. Running `yarn run dev` will start the server and use the nexus-prisma plugin to generate `schema.graphql` based on the new schema.
 1. Since Heroku reuses the cached `node_modules` if the package.json does not change, but we change the Prisma Client in `node_modules` with `npx prisma generate`, we have to force Heroku to rebuild packages after changing the database schema. Install heroku-repo with `heroku plugins:install heroku-repo` and then purge cache with `heroku repo:purge_cache -a bsp-graphql-server` before pushing
-1. When using with Gatsby: Remove .cache of Gatsby development server and start again `rm -rf .cach && yarn run dev`
+1. When using with Gatsby: Remove .cache of Gatsby development server and start again `rm -rf .cache && yarn run dev`

@@ -64,8 +64,10 @@ export interface NexusGenRootTypes {
     language_name_native?: string | null; // String
   }
   Performance: { // root type
+    content_url?: string | null; // String
     main_performance?: string | null; // String
     performance_id: number; // Int!
+    performance_prio?: number | null; // Int
     published?: string | null; // String
     soundcloud_id?: string | null; // String
     youtube_id?: string | null; // String
@@ -128,9 +130,11 @@ export interface NexusGenFieldTypes {
     songs: NexusGenRootTypes['Song'][]; // [Song!]!
   }
   Performance: { // field return type
+    content_url: string | null; // String
     contributors: NexusGenRootTypes['Contributor'][]; // [Contributor!]!
     main_performance: string | null; // String
     performance_id: number; // Int!
+    performance_prio: number | null; // Int
     published: string | null; // String
     song: NexusGenRootTypes['Song'] | null; // Song
     soundcloud_id: string | null; // String

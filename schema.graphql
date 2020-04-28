@@ -41,9 +41,11 @@ input LanguageWhereUniqueInput {
 }
 
 type Performance {
+  content_url: String
   contributors: [Contributor!]!
   main_performance: String
   performance_id: Int!
+  performance_prio: Int
   published: String
   song: Song
   soundcloud_id: String

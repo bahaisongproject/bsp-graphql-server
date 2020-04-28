@@ -46,6 +46,8 @@ model Performance {
   published        String?
   youtube_id       String?
   soundcloud_id    String?
+  content_url      String?
+  performance_prio Int?
   song             Song?         @relation(fields: [song_id], references: [song_id])
   contributors      Contributor[] @relation(references: [contributor_id])
   song_id          Int?

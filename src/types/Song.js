@@ -6,6 +6,7 @@ const Song = objectType({
     t.model.song_id();
     t.model.title();
     t.model.slug();
+    t.model.song_description();
     t.model.performances({
       pagination: false,
     });

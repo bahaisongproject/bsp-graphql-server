@@ -11,6 +11,7 @@ model Song {
   song_id     Int           @default(autoincrement()) @id
   title       String?
   slug        String  @unique
+  song_description String?
   performances Performance[]
   excerpts    Excerpt[]     @relation(references: [excerpt_id])
   additional_languages    Language[]    @relation(references: [language_id])
@@ -46,6 +47,7 @@ model Performance {
   published        String?
   youtube_id       String?
   soundcloud_id    String?
+  performance_description String?
   content_url      String?
   performance_prio Int?
   song             Song?         @relation(fields: [song_id], references: [song_id])

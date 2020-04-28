@@ -44,6 +44,7 @@ type Performance {
   content_url: String
   contributors: [Contributor!]!
   main_performance: String
+  performance_description: String
   performance_id: Int!
   performance_prio: Int
   published: String
@@ -79,6 +80,7 @@ type Song {
   languages: [Language!]!
   performances: [Performance!]!
   slug: String!
+  song_description: String
   song_id: Int!
   sources: [Source!]!
   tags: [Tag!]!

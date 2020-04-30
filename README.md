@@ -7,11 +7,11 @@ Checkout the bahá'í song project API at http://api.bahaisongproject.com/.
 1. Clone repo with `git clone git@github.com:bahaisongproject/bsp-graphql-server.git`
 1. `cd` into repo with `cd bsp-graphql-server`
 1. Use correct node version: `nvm use`
-1. Install dependencies: `npm install`
+1. Install dependencies: `yarn`
 
 What you can do now
 
-- Start node app with `npm run dev`. You can access the GraphQL Playground at `http://localhost:4000/`
+- Start node app with `yarn run dev`. You can access the GraphQL Playground at `http://localhost:4000/`
 - Open Prisma studio with `npx prisma studio --experimental`. This should open a page at `http://localhost:5555/`
 
 Changing the database schema

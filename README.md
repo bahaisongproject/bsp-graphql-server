@@ -23,8 +23,28 @@ Checkout the bahá'í song project API at http://api.bahaisongproject.com/.
 1. Since Heroku reuses the cached `node_modules` if the package.json does not change, but we change the Prisma Client in `node_modules` with `npx prisma generate`, we have to force Heroku to rebuild packages after changing the database schema. Install heroku-repo with `heroku plugins:install heroku-repo` and then purge cache with `heroku repo:purge_cache -a bsp-graphql-server` before pushing
 1. When using with Gatsby: Remove .cache of Gatsby development server and start again `rm -rf .cache && yarn run dev`
 
-## Example queries
+## Querying the API
+The following queries are possible:
+```
+type Query {
+  contributor(where: ContributorWhereUniqueInput!): Contributor
+  contributors: [Contributor!]!
+  excerpt(where: ExcerptWhereUniqueInput!): Excerpt
+  excerpts: [Excerpt!]!
+  language(where: LanguageWhereUniqueInput!): Language
+  languages: [Language!]!
+  performance(where: PerformanceWhereUniqueInput!): Performance
+  performances: [Performance!]!
+  song(where: SongWhereUniqueInput!): Song
+  songs: [Song!]!
+  source(where: SourceWhereUniqueInput!): Source
+  sources: [Source!]!
+  tag(where: TagWhereUniqueInput!): Tag
+  tags: [Tag!]!
+}
+```
 
+### Example queries
 Get all songs and associated performances
 ```
 query {
@@ -55,5 +75,119 @@ query {
       excerpt_text
     }
   }
+}
+```
+
+### Types
+#### Contributor
+```
+type Contributor {
+  contributor_id: Int!
+  contributor_name: String
+  contributor_url: String
+  performances: [Performance!]!
+  songs: [Song!]!
+}
+
+input ContributorWhereUniqueInput {
+  contributor_id: Int
+}
+```
+
+#### Excerpt
+```
+type Excerpt {
+  excerpt_id: Int!
+  excerpt_text: String
+  excerpt_transliteration: String
+  language: Language
+  songs: [Song!]!
+  source: Source
+}
+
+input ExcerptWhereUniqueInput {
+  excerpt_id: Int
+}
+```
+
+#### Language
+```
+type Language {
+  excerpts: [Excerpt!]!
+  language_code: String
+  language_id: Int!
+  language_name_en: String
+  language_name_native: String
+  songs: [Song!]!
+}
+
+input LanguageWhereUniqueInput {
+  language_id: Int
+}
+```
+
+#### Performance
+```
+type Performance {
+  content_url: String
+  contributors: [Contributor!]!
+  main_performance: String
+  performance_description: String
+  performance_id: Int!
+  performance_prio: Int
+  published: String
+  song: Song
+  soundcloud_id: String
+  youtube_id: String
+}
+
+input PerformanceWhereUniqueInput {
+  performance_id: Int
+}
+```
+
+#### Song
+```
+type Song {
+  contributors: [Contributor!]!
+  excerpts: [Excerpt!]!
+  languages: [Language!]!
+  performances: [Performance!]!
+  slug: String!
+  song_description: String
+  song_id: Int!
+  sources: [Source!]!
+  tags: [Tag!]!
+  title: String
+}
+
+input SongWhereUniqueInput {
+  slug: String
+  song_id: Int
+}
+```
+
+#### Source
+```
+type Source {
+  excerpts: [Excerpt!]!
+  songs: [Song!]!
+  source_author: String
+  source_description: String
+  source_id: Int!
+}
+
+input SourceWhereUniqueInput {
+  source_id: Int
+}
+```
+
+#### Tag
+```
+type Tag {
+  songs: [Song!]!
+  tag_description: String
+  tag_id: Int!
+  tag_name: String
 }
 ```

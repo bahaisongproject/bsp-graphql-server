@@ -45,7 +45,7 @@ type Query {
 ```
 
 ### Example queries
-Get all songs and associated performances
+#### Get all songs and associated performances
 ```
 query {
   songs {
@@ -57,7 +57,7 @@ query {
 }
 ```
 
-Get all songs, the song contributors, performance urls, and excerpts upon which the songs are based
+#### Get all songs, the song contributors, performance urls, and excerpts upon which the songs are based
 ```
 query {
   songs {
@@ -73,6 +73,20 @@ query {
         source_description
       }
       excerpt_text
+    }
+  }
+}
+```
+
+#### Get a single song
+```
+query {
+  song (where: {
+    slug: "if-thou-lovest-me"
+  }){
+    title
+    performances {
+      content_url
     }
   }
 }

@@ -3,8 +3,6 @@ const { makeSchema, objectType, intArg, stringArg } = require("nexus");
 const { PrismaClient } = require("@prisma/client");
 const { nexusPrismaPlugin } = require("nexus-prisma");
 const types = require("./types");
-const express = require('express');
-const app = express();
 const prisma = new PrismaClient();
 
 new GraphQLServer({

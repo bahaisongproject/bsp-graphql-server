@@ -5,6 +5,7 @@
 type Contributor {
   contributor_id: Int!
   contributor_name: String
+  contributor_slug: String
   contributor_url: String
   performances: [Performance!]!
   songs: [Song!]!

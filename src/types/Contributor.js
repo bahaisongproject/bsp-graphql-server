@@ -6,6 +6,7 @@ const Contributor = objectType({
     t.model.contributor_id();
     t.model.contributor_name();
     t.model.contributor_url();
+    t.model.contributor_slug();
     t.model.performances({
       pagination: false,
     });

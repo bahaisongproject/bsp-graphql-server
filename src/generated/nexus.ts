@@ -50,6 +50,7 @@ export interface NexusGenRootTypes {
   Contributor: { // root type
     contributor_id: number; // Int!
     contributor_name?: string | null; // String
+    contributor_slug?: string | null; // String
     contributor_url?: string | null; // String
   }
   Excerpt: { // root type
@@ -112,6 +113,7 @@ export interface NexusGenFieldTypes {
   Contributor: { // field return type
     contributor_id: number; // Int!
     contributor_name: string | null; // String
+    contributor_slug: string | null; // String
     contributor_url: string | null; // String
     performances: NexusGenRootTypes['Performance'][]; // [Performance!]!
     songs: NexusGenRootTypes['Song'][]; // [Song!]!

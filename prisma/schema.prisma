@@ -38,6 +38,7 @@ model Contributor {
   contributor_id   Int           @default(autoincrement()) @id
   contributor_name String?
   contributor_url  String?
+  contributor_slug String?
   performances      Performance[] @relation(references: [performance_id])
   songs             Song[]        @relation(references: [song_id])
 }

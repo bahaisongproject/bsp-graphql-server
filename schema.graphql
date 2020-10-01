@@ -109,6 +109,7 @@ type Tag {
   tag_description: String
   tag_id: Int!
   tag_name: String
+  tag_slug: String
 }
 
 input TagWhereUniqueInput {

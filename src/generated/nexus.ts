@@ -89,6 +89,7 @@ export interface NexusGenRootTypes {
     tag_description?: string | null; // String
     tag_id: number; // Int!
     tag_name?: string | null; // String
+    tag_slug?: string | null; // String
   }
   String: string;
   Int: number;
@@ -183,6 +184,7 @@ export interface NexusGenFieldTypes {
     tag_description: string | null; // String
     tag_id: number; // Int!
     tag_name: string | null; // String
+    tag_slug: string | null; // String
   }
 }
 

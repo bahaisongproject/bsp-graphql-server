@@ -23,6 +23,7 @@ model Tag {
   tag_id          Int     @default(autoincrement()) @id
   tag_description String?
   tag_name        String?
+  tag_slug        String?
   songs            Song[]  @relation(references: [song_id])
 }
 

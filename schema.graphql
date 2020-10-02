@@ -15,6 +15,8 @@ input ContributorWhereUniqueInput {
   contributor_id: Int
 }
 
+scalar DateTime
+
 type Excerpt {
   excerpt_id: Int!
   excerpt_text: String
@@ -77,6 +79,7 @@ type Query {
 
 type Song {
   contributors: [Contributor!]!
+  created_at: DateTime!
   excerpts: [Excerpt!]!
   languages: [Language!]!
   performances: [Performance!]!

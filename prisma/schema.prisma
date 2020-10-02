@@ -17,6 +17,7 @@ model Song {
   additional_languages    Language[]    @relation(references: [language_id])
   tags         Tag[]         @relation(references: [tag_id])
   contributors Contributor[] @relation(references: [contributor_id])
+  created_at DateTime @default(now())
 }
 
 model Tag {

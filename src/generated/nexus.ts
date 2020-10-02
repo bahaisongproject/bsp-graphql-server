@@ -76,6 +76,7 @@ export interface NexusGenRootTypes {
   }
   Query: {};
   Song: { // root type
+    created_at: any; // DateTime!
     slug: string; // String!
     song_description?: string | null; // String
     song_id: number; // Int!
@@ -97,6 +98,7 @@ export interface NexusGenRootTypes {
   Float: number;
   Boolean: boolean;
   ID: string;
+  DateTime: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -164,6 +166,7 @@ export interface NexusGenFieldTypes {
   }
   Song: { // field return type
     contributors: NexusGenRootTypes['Contributor'][]; // [Contributor!]!
+    created_at: any; // DateTime!
     excerpts: NexusGenRootTypes['Excerpt'][]; // [Excerpt!]!
     languages: NexusGenRootTypes['Language'][]; // [Language!]!
     performances: NexusGenRootTypes['Performance'][]; // [Performance!]!
@@ -229,7 +232,7 @@ export type NexusGenEnumNames = never;
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
 
 export type NexusGenUnionNames = never;
 

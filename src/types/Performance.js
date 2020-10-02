@@ -15,6 +15,7 @@ const Performance = objectType({
     t.model.contributors({
       pagination: false,
     });
+    t.model.created_at();
   },
 });
 

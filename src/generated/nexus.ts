@@ -66,6 +66,7 @@ export interface NexusGenRootTypes {
   }
   Performance: { // root type
     content_url?: string | null; // String
+    created_at: any; // DateTime!
     main_performance?: string | null; // String
     performance_description?: string | null; // String
     performance_id: number; // Int!
@@ -139,6 +140,7 @@ export interface NexusGenFieldTypes {
   Performance: { // field return type
     content_url: string | null; // String
     contributors: NexusGenRootTypes['Contributor'][]; // [Contributor!]!
+    created_at: any; // DateTime!
     main_performance: string | null; // String
     performance_description: string | null; // String
     performance_id: number; // Int!

@@ -46,6 +46,7 @@ input LanguageWhereUniqueInput {
 type Performance {
   content_url: String
   contributors: [Contributor!]!
+  created_at: DateTime!
   main_performance: String
   performance_description: String
   performance_id: Int!

@@ -4,7 +4,6 @@ const Performance = objectType({
   name: "Performance",
   definition(t) {
     t.model.performance_id();
-    t.model.main_performance();
     t.model.published();
     t.model.performance_description();
     t.model.content_url();

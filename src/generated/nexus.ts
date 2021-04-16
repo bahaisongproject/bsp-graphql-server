@@ -125,6 +125,7 @@ export interface NexusGenFieldTypes {
     language: NexusGenRootTypes['Language'] | null; // Language
     songs: NexusGenRootTypes['Song'][]; // [Song!]!
     source: NexusGenRootTypes['Source'] | null; // Source
+    translation: NexusGenRootTypes['Excerpt']; // Excerpt!
   }
   Language: { // field return type
     excerpts: NexusGenRootTypes['Excerpt'][]; // [Excerpt!]!
@@ -190,6 +191,11 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenArgTypes {
+  Excerpt: {
+    translation: { // args
+      language_code?: string | null; // String
+    }
+  }
   Query: {
     contributor: { // args
       where: NexusGenInputs['ContributorWhereUniqueInput']; // ContributorWhereUniqueInput!

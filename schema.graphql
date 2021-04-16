@@ -23,6 +23,7 @@ type Excerpt {
   language: Language
   songs: [Song!]!
   source: Source
+  translation(language_code: String): Excerpt!
 }
 
 input ExcerptWhereUniqueInput {

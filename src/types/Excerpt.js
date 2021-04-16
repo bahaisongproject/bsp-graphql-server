@@ -1,4 +1,4 @@
-const { objectType } = require("nexus");
+const { objectType, stringArg } = require("nexus");
 
 const Excerpt = objectType({
   name: "Excerpt",
@@ -14,23 +14,33 @@ const Excerpt = objectType({
     t.list.field("all_translations", {
       type: "Excerpt",
       resolve: async (parent, args, ctx) => {
-        const translations = await ctx.prisma.source
+        const all_translations = await ctx.prisma.source
           .findOne({
             where: { source_id: parent.source_id },
           })
           .excerpts();
-        return translations;
+        return all_translations;
       },
     });
-    t.list.field("all_translations", {
+    t.field("translation", {
       type: "Excerpt",
-      resolve: async (parent, args, ctx) => {
-        const translations = await ctx.prisma.source
+      args: {
+        language_code: stringArg(),
+      },
+      resolve: async (parent, { language_code }, ctx) => {
+        const all_translations = await ctx.prisma.source
           .findOne({
             where: { source_id: parent.source_id },
           })
           .excerpts();
-        return translations;
+        for (const i in all_translations) {
+          const language = await ctx.prisma.language.findOne({
+            where: { language_id: all_translations[i]["language_id"] },
+          });
+          if (language["language_code"] == language_code) {
+            return all_translations[i];
+          }
+        }
       },
     });
   },

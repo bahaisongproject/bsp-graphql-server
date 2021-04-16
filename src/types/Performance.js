@@ -6,9 +6,7 @@ const Performance = objectType({
     t.model.performance_id();
     t.model.main_performance();
     t.model.published();
-    t.model.performance_description()
-    t.model.youtube_id();
-    t.model.soundcloud_id();
+    t.model.performance_description();
     t.model.content_url();
     t.model.performance_prio();
     t.model.song();

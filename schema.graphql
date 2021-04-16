@@ -45,14 +45,11 @@ type Performance {
   content_url: String
   contributors: [Contributor!]!
   created_at: String
-  main_performance: String
   performance_description: String
   performance_id: Int!
   performance_prio: Int
   published: String
   song: Song
-  soundcloud_id: String
-  youtube_id: String
 }
 
 input PerformanceWhereUniqueInput {

@@ -46,10 +46,7 @@ model Contributor {
 
 model Performance {
   performance_id   Int           @default(autoincrement()) @id
-  main_performance String?
   published        String?
-  youtube_id       String?
-  soundcloud_id    String?
   performance_description String?
   content_url      String?
   performance_prio Int?

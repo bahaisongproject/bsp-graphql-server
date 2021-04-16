@@ -16,6 +16,7 @@ input ContributorWhereUniqueInput {
 }
 
 type Excerpt {
+  all_translations: [Excerpt!]!
   excerpt_id: Int!
   excerpt_text: String
   excerpt_transliteration: String

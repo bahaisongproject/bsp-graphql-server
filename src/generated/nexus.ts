@@ -118,6 +118,7 @@ export interface NexusGenFieldTypes {
     songs: NexusGenRootTypes['Song'][]; // [Song!]!
   }
   Excerpt: { // field return type
+    all_translations: NexusGenRootTypes['Excerpt'][]; // [Excerpt!]!
     excerpt_id: number; // Int!
     excerpt_text: string | null; // String
     excerpt_transliteration: string | null; // String

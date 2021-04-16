@@ -41,6 +41,7 @@ const Excerpt = objectType({
             return all_translations[i];
           }
         }
+        return "nil";
       },
     });
   },

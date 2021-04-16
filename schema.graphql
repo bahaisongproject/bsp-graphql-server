@@ -80,6 +80,7 @@ type Song {
   created_at: String
   excerpts: [Excerpt!]!
   languages: [Language!]!
+  music: String
   performances: [Performance!]!
   slug: String!
   song_description: String
@@ -87,6 +88,7 @@ type Song {
   sources: [Source!]!
   tags: [Tag!]!
   title: String
+  words: String
 }
 
 input SongWhereUniqueInput {

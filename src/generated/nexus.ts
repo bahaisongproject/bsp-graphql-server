@@ -166,6 +166,7 @@ export interface NexusGenFieldTypes {
     created_at: string | null; // String
     excerpts: NexusGenRootTypes['Excerpt'][]; // [Excerpt!]!
     languages: NexusGenRootTypes['Language'][]; // [Language!]!
+    music: string | null; // String
     performances: NexusGenRootTypes['Performance'][]; // [Performance!]!
     slug: string; // String!
     song_description: string | null; // String
@@ -173,6 +174,7 @@ export interface NexusGenFieldTypes {
     sources: NexusGenRootTypes['Source'][]; // [Source!]!
     tags: NexusGenRootTypes['Tag'][]; // [Tag!]!
     title: string | null; // String
+    words: string | null; // String
   }
   Source: { // field return type
     excerpts: NexusGenRootTypes['Excerpt'][]; // [Excerpt!]!

@@ -8,70 +8,70 @@ datasource db {
 }
 
 model Song {
-  song_id     Int           @default(autoincrement()) @id
-  title       String?
-  slug        String  @unique
-  song_description String?
-  performances Performance[]
-  excerpts    Excerpt[]     @relation(references: [excerpt_id])
-  additional_languages    Language[]    @relation(references: [language_id])
-  tags         Tag[]         @relation(references: [tag_id])
-  contributors Contributor[] @relation(references: [contributor_id])
-  created_at String?
+  song_id              Int           @id @default(autoincrement())
+  title                String?
+  slug                 String        @unique
+  song_description     String?
+  performances         Performance[]
+  excerpts             Excerpt[]     @relation(references: [excerpt_id])
+  additional_languages Language[]    @relation(references: [language_id])
+  tags                 Tag[]         @relation(references: [tag_id])
+  contributors         Contributor[] @relation(references: [contributor_id])
+  created_at           String?
 }
 
 model Tag {
-  tag_id          Int     @default(autoincrement()) @id
+  tag_id          Int     @id @default(autoincrement())
   tag_description String?
   tag_name        String?
   tag_slug        String?
-  songs            Song[]  @relation(references: [song_id])
+  songs           Song[]  @relation(references: [song_id])
 }
 
 model Source {
-  source_id          Int       @default(autoincrement()) @id
+  source_id          Int       @id @default(autoincrement())
   source_author      String?
   source_description String?
-  excerpts            Excerpt[]
+  excerpts           Excerpt[]
 }
 
 model Contributor {
-  contributor_id   Int           @default(autoincrement()) @id
+  contributor_id   Int           @id @default(autoincrement())
   contributor_name String?
   contributor_url  String?
   contributor_slug String?
-  performances      Performance[] @relation(references: [performance_id])
-  songs             Song[]        @relation(references: [song_id])
+  performances     Performance[] @relation(references: [performance_id])
+  songs            Song[]        @relation(references: [song_id])
 }
 
 model Performance {
-  performance_id   Int           @default(autoincrement()) @id
-  published        String?
+  performance_id          Int           @id @default(autoincrement())
+  published               String?
   performance_description String?
-  content_url      String?
-  performance_prio Int?
-  song             Song?         @relation(fields: [song_id], references: [song_id])
-  contributors      Contributor[] @relation(references: [contributor_id])
-  song_id          Int?
-  created_at String?
+  content_url             String?
+  performance_prio        Int?
+  song                    Song?         @relation(fields: [song_id], references: [song_id])
+  contributors            Contributor[] @relation(references: [contributor_id])
+  song_id                 Int?
+  created_at              String?
 }
 
 model Excerpt {
-  excerpt_id   Int       @default(autoincrement()) @id
-  excerpt_text String?
+  excerpt_id              Int       @id @default(autoincrement())
+  excerpt_text            String?
   excerpt_transliteration String?
-  language     Language? @relation(fields: [language_id], references: [language_id])
-  source       Source?   @relation(fields: [source_id], references: [source_id])
-  songs         Song[]    @relation(references: [song_id])
-  language_id  Int?
-  source_id    Int?
+  language                Language? @relation(fields: [language_id], references: [language_id])
+  source                  Source?   @relation(fields: [source_id], references: [source_id])
+  songs                   Song[]    @relation(references: [song_id])
+  language_id             Int?
+  source_id               Int?
 }
 
 model Language {
-  language_id          Int       @default(autoincrement()) @id
+  language_id          Int       @id @default(autoincrement())
   language_code        String?
   language_name_en     String?
   language_name_native String?
-  excerpts              Excerpt[]
-  songs                 Song[]    @relation(references: [song_id])
+  excerpts             Excerpt[]
+  songs                Song[]    @relation(references: [song_id])
 }

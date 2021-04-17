@@ -1,4 +1,5 @@
-const { objectType } = require("nexus");
+const { objectType, stringArg } = require("nexus");
+const fetch = require("node-fetch");
 
 const Song = objectType({
   name: "Song",
@@ -154,6 +155,31 @@ const Song = objectType({
         } else {
           return null;
         }
+      },
+    });
+
+    t.string("song_sheet", {
+      args: {
+        format: stringArg({
+          default: "chordpro",
+          required: false,
+        }),
+      },
+      resolve: async (parent, { format }, ctx) => {
+        let song_sheet;
+        if (format == "chordpro") {
+          song_sheet = await fetch(
+            `https://www.bahaisongproject.com/${parent.slug}.pro`
+          ).then((response) => response.text());
+        } else if (format == "pdf") {
+          song_sheet = await fetch(
+            `https://www.bahaisongproject.com/${parent.slug}.pdf`
+          )
+            .then((response) => response.buffer())
+            .then((buffer) => buffer.toString("base64"));
+          console.log(song_sheet);
+        }
+        return song_sheet;
       },
     });
 

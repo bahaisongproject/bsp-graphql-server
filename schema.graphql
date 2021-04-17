@@ -85,6 +85,7 @@ type Song {
   slug: String!
   song_description: String
   song_id: Int!
+  song_sheet(format: String = "chordpro"): String!
   sources: [Source!]!
   tags: [Tag!]!
   title: String

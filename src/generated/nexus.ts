@@ -171,6 +171,7 @@ export interface NexusGenFieldTypes {
     slug: string; // String!
     song_description: string | null; // String
     song_id: number; // Int!
+    song_sheet: string; // String!
     sources: NexusGenRootTypes['Source'][]; // [Source!]!
     tags: NexusGenRootTypes['Tag'][]; // [Tag!]!
     title: string | null; // String
@@ -219,6 +220,11 @@ export interface NexusGenArgTypes {
     }
     tag: { // args
       where: NexusGenInputs['TagWhereUniqueInput']; // TagWhereUniqueInput!
+    }
+  }
+  Song: {
+    song_sheet: { // args
+      format?: string | null; // String
     }
   }
 }

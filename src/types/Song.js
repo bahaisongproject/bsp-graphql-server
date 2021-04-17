@@ -165,6 +165,7 @@ const Song = objectType({
           required: false,
         }),
       },
+      nullable: true,
       resolve: async (parent, { format }, ctx) => {
         let song_sheet;
         if (format == "chordpro") {

@@ -178,7 +178,6 @@ const Song = objectType({
           )
             .then((response) => response.buffer())
             .then((buffer) => buffer.toString("base64"));
-          console.log(song_sheet);
         }
         return song_sheet;
       },

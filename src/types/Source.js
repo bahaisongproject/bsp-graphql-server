@@ -13,8 +13,6 @@ const Source = objectType({
           .findOne({ where: { source_id: parent.source_id } })
           .excerpts();
 
-        console.log(excerpts);
-
         let songs = [];
 
         // Add songs based on these excerpts

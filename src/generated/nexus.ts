@@ -66,7 +66,6 @@ export interface NexusGenRootTypes {
   }
   Performance: { // root type
     content_url?: string | null; // String
-    created_at?: string | null; // String
     performance_description?: string | null; // String
     performance_id: number; // Int!
     performance_prio?: number | null; // Int
@@ -74,7 +73,6 @@ export interface NexusGenRootTypes {
   }
   Query: {};
   Song: { // root type
-    created_at?: string | null; // String
     slug: string; // String!
     song_description?: string | null; // String
     song_id: number; // Int!
@@ -199,6 +197,11 @@ export interface NexusGenArgTypes {
       language_code?: string | null; // String
     }
   }
+  Performance: {
+    created_at: { // args
+      formatString?: string | null; // String
+    }
+  }
   Query: {
     contributor: { // args
       where: NexusGenInputs['ContributorWhereUniqueInput']; // ContributorWhereUniqueInput!
@@ -223,6 +226,9 @@ export interface NexusGenArgTypes {
     }
   }
   Song: {
+    created_at: { // args
+      formatString?: string | null; // String
+    }
     song_sheet: { // args
       format?: string | null; // String
     }

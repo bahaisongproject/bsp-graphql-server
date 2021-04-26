@@ -1,4 +1,5 @@
-const { objectType } = require("nexus");
+const { objectType, stringArg } = require("nexus");
+const moment = require("moment");
 
 const Performance = objectType({
   name: "Performance",
@@ -12,7 +13,21 @@ const Performance = objectType({
     t.model.contributors({
       pagination: false,
     });
-    t.model.created_at();
+    t.string("created_at", {
+      args: {
+        formatString: stringArg(),
+      },
+      nullable: true,
+      resolve: async (parent, { formatString }, ctx) => {
+        const song = await ctx.prisma.performance.findOne({
+          where: { performance_id: parent.performance_id },
+        });
+        dateStr = song.created_at;
+        formatString = formatString ? formatString : null;
+        dateFormatted = moment(dateStr).format(formatString);
+        return dateFormatted;
+      },
+    });
   },
 });
 

@@ -46,7 +46,7 @@ input LanguageWhereUniqueInput {
 type Performance {
   content_url: String
   contributors: [Contributor!]!
-  created_at: String
+  created_at(formatString: String): String
   performance_description: String
   performance_id: Int!
   performance_prio: Int
@@ -77,7 +77,7 @@ type Query {
 
 type Song {
   contributors: [Contributor!]!
-  created_at: String
+  created_at(formatString: String): String
   excerpts: [Excerpt!]!
   languages: [Language!]!
   music: String

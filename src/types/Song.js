@@ -1,6 +1,31 @@
 const { objectType, stringArg } = require("nexus");
+const pRetry = require("p-retry");
 const fetch = require("node-fetch");
 const moment = require("moment");
+
+const getSongSheet = async (parent) => {
+  const response = await fetch(
+    `https://www.bahaisongproject.com/${parent.slug}.pro`
+  );
+  // Abort retrying if the resource doesn't exist
+  if (response.status === 404) {
+    throw new pRetry.AbortError(response.statusText);
+  }
+
+  return response.text();
+};
+
+const getPDFBase64 = async (parent) => {
+  const response = await fetch(
+    `https://www.bahaisongproject.com/${parent.slug}.pdf`
+  );
+  // Abort retrying if the resource doesn't exist
+  if (response.status === 404) {
+    throw new pRetry.AbortError(response.statusText);
+  }
+
+  return response.buffer().toString("base64");
+};
 
 const Song = objectType({
   name: "Song",
@@ -185,9 +210,7 @@ const Song = objectType({
       resolve: async (parent, { format }, ctx) => {
         let song_sheet;
         if (format == "chordpro") {
-          song_sheet = await fetch(
-            `https://www.bahaisongproject.com/${parent.slug}.pro`
-          ).then((response) => response.text());
+          song_sheet = await pRetry(() => getChordPro(parent), { retries: 5 });
         } else if (format == "pdf") {
           song_sheet = await fetch(
             `https://www.bahaisongproject.com/${parent.slug}.pdf`

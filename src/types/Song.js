@@ -1,30 +1,35 @@
 const { objectType, stringArg } = require("nexus");
 const pRetry = require("p-retry");
 const fetch = require("node-fetch");
+const path = require("path");
+const fs = require("fs").promises;
 const moment = require("moment");
 
 const getSongSheet = async (parent) => {
-  const response = await fetch(
-    `https://www.bahaisongproject.com/${parent.slug}.pro`
-  );
-  // Abort retrying if the resource doesn't exist
-  if (response.status === 404) {
-    throw new pRetry.AbortError(response.statusText);
+  const rootDir = `${__dirname}`.split(path.sep).slice(0, -2).join(path.sep);
+  const songSheetDir = path.join(rootDir, "public");
+  const fileName = `${parent.slug}.pro`;
+  try {
+    const content = await fs.readFile(`${songSheetDir}/${fileName}`, "utf8");
+    return content;
+  } catch (e) {
+    console.log("Error:", e.stack);
   }
-
-  return response.text();
 };
 
 const getPDFBase64 = async (parent) => {
-  const response = await fetch(
-    `https://www.bahaisongproject.com/${parent.slug}.pdf`
-  );
-  // Abort retrying if the resource doesn't exist
-  if (response.status === 404) {
-    throw new pRetry.AbortError(response.statusText);
+  const rootDir = `${__dirname}`.split(path.sep).slice(0, -2).join(path.sep);
+  const songSheetDir = path.join(rootDir, "public");
+  const fileName = `${parent.slug}.pdf`;
+  // console.log(content);
+  try {
+    const content = await fs.readFile(`${songSheetDir}/${fileName}`, {
+      encoding: "base64",
+    });
+    return content;
+  } catch (e) {
+    console.log("Error:", e.stack);
   }
-
-  return response.buffer().toString("base64");
 };
 
 const Song = objectType({
@@ -210,13 +215,9 @@ const Song = objectType({
       resolve: async (parent, { format }, ctx) => {
         let song_sheet;
         if (format == "chordpro") {
-          song_sheet = await pRetry(() => getChordPro(parent), { retries: 5 });
+          song_sheet = await getSongSheet(parent);
         } else if (format == "pdf") {
-          song_sheet = await fetch(
-            `https://www.bahaisongproject.com/${parent.slug}.pdf`
-          )
-            .then((response) => response.buffer())
-            .then((buffer) => buffer.toString("base64"));
+          song_sheet = await getPDFBase64(parent);
         }
         return song_sheet;
       },
